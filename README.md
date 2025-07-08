@@ -109,9 +109,9 @@ All YOLO models share a three-part architecture:
 
 ## 8. Sample Outputs
 
-![Dent Detection](dent_example.jpg)
-![Scratch Detection](scratch_example.jpg)
-![Broken Glass Detection](glass_example.jpg)
+![Dent Detection](dent.jpg)
+![Scratch Detection](scratch.jpg)
+![Broken Glass Detection](broken-glass.jpg)
 
 ## 9. Project Teammates
 - Suyranarayana Khannur 
