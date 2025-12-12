@@ -1,6 +1,6 @@
-# Car Damage Detection using YOLO Variants
+# Automated Vehicle Damage Detection and Repair Cost Estimation using Deep Learning
 
-This project explores a deep learning-based approach for **automated detection and classification of vehicle damage** using object detection models. It performs a comparative analysis of **YOLOv5, YOLOv8, and a conceptual YOLOv11**, aimed at streamlining vehicle damage assessment and improving insurance claim workflows.
+This project explores a deep learning-based approach for **automated detection and classification of vehicle damage** using object detection models. It performs a comparative analysis of **YOLOv5, YOLOv8, and a conceptual YOLOv11**, aimed at streamlining vehicle damage assessment and repair cost estimation improving insurance claim workflows.
 
 ---
 
@@ -99,7 +99,41 @@ All YOLO models share a three-part architecture:
 
 ---
 
-## 7. Conclusion
+## 7. Repair Cost Estimation
+
+Along with detection, the system estimates the **repair cost** for each detected damage based on bounding-box severity.
+
+### **7.1 Maximum Repair Cost per Class**
+- **Scratch:** Rs. 750  
+- **Deformation / Dent:** Rs. 1,500  
+- **Broken Glass:** Rs. 5,000  
+
+### **7.2 Severity Estimation (Bounding Box Area Ratio)**  
+Severity is derived from: 
+
+### **7.3 Cost Multiplier Table**
+| Area Ratio Range        | Severity | Cost Multiplier |
+|--------------------------|----------|------------------|
+| `< 0.02`                | Low      | 0.25×            |
+| `0.02 – 0.05`           | Medium   | 0.50×            |
+| `0.05 – 0.12`           | High     | 0.75×            |
+| `> 0.12`                | Severe   | 1.00×            |
+
+### **7.4 Final Cost Calculation**
+final_cost = round(max_price_for_class * multiplier)
+
+### **7.5 Output Visualization**
+Each bounding box includes:
+- Damage type + confidence  
+- Estimated repair cost (`Rs.xxx`)  
+
+The bottom-right corner shows:
+Total Repair Cost: Rs.x,xxx
+
+---
+
+
+## 8. Conclusion
 
 - **YOLOv8n** is the most balanced model with high **recall** and **F1 score**, ideal for sensitive damage detection tasks.
 - **YOLOv8m** performs moderately well, suitable when computational resources allow.
@@ -107,12 +141,12 @@ All YOLO models share a three-part architecture:
 
 ---
 
-## 8. Sample Outputs
+## 9. Sample Outputs
 
 ![Dent Detection](dent.jpg)
 ![Scratch Detection](scratch.jpg)
 ![Broken Glass Detection](broken-glass.jpg)
 
-## 9. Project Teammates
+## 10. Project Teammates
 - Suyranarayana Khannur 
 - Rohit Kupplur
